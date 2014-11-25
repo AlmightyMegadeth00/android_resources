@@ -21,6 +21,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.DisplayInfo;
@@ -37,7 +38,7 @@ import java.util.ArrayList;
  * isPhone(Context c)                                -  boolean for devices < 600dp
  * isPhablet(Context c)                              -  boolean for devices < 720dp
  * isTablet(Context c)                               -  boolean for devices > 720dp
- * isPackageInstalled(String packageName, Context c) -  boolean check if a package is installed
+ * isPackageInstalled(Context c, String packageName) -  boolean check if a package is installed
  * getAllChildren(View v)                            -  return list of all children
  * getAllChildren(View root, Class<T> returnType)    -  return a list of all children of a type
  */
@@ -133,7 +134,7 @@ public class DeviceUtils {
      *
      * @return If the packages is installed
     */
-    public static boolean isPackageInstalled(final String packageName, Context c) {
+    public static boolean isPackageInstalled(Context c, final String packageName) {
 		final PackageManager pm = c.getPackageManager();
         String mVersion;
         try {
